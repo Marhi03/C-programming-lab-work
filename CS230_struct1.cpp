@@ -1,60 +1,57 @@
 #include <stdio.h>
 #include <stdlib.h>
-
 struct studentData
 {
-    int rollno[10];
+    int rollno;
     char name[20];
-    char courseName[15];
-    char majorSub[10];
-    char minorSub[10];
+    char courseName[20];
+    char majorSub[20];
+    char minorSub[20];
 };
 
 int main()
 {
-    int n;
+    int n, i;
     studentData s[10];
-    printf("Structure for storing 10 student's data is already created.\n");
-    for(int i=0; i<=9; i++)
+    printf("Structure to store student data is already created.\n");
+    for(int i=0; i<10; i++)
     {
-        printf("Enter the details of student no. %d.\n", i+1);
-        printf("Enter roll no: ");
-        scanf("%d", &s[i].rollno);
-        printf("\nEnter name: ");
-        fflush(stdin);
+        printf("Enter the details of student no. %d:\n", i+1);
+        printf("Enter name         :");
         gets(s[i].name);
-        printf("\nEnter course name: ");
+        fflush(stdin);
+        printf("Enter roll no.     :");
+        scanf("%d", &s[i].rollno);
+        fflush(stdin);
+        printf("Enter Course Name  :");
         gets(s[i].courseName);
-        printf("\nEnter Major Subject: ");
+        printf("Enter Major Subject:");
         gets(s[i].majorSub);
-        printf("\nEnter Minor Subject: ");
+        printf("Enter Minor Subject:");
         gets(s[i].minorSub);
     }
     void display(struct studentData*);
-    int i=0;
-    for(; i<=9; i++)
+    for(int i=0; i<10; i++)
     {
         display(&s[i]);
     }
-    printf("Enter a roll no. :");
+    printf("Enter a Rollno. to see its details.\n");
     scanf("%d", &n);
     void rdisplay(struct studentData*);
-    i=n;
-    {
-        rdisplay(&s[i]);
-    }
+    i=n-1;
+    rdisplay(&s[i]);
 }
 
-void display(struct studentData*ps)
+void display(struct studentData*n)
 {
-    printf("Name :  %s\n", ps->name);
+    printf("Name: %s\n", n->name);
 }
 
-void rdisplay(struct studentData*rd)
+void rdisplay(studentData*r)
 {
-    printf("Roll no.       :  %d\n", rd->rollno);
-    printf("Name           :  %s\n", rd->name);
-    printf("Course Name    :  %s\n", rd->courseName);
-    printf("Major Subjects :  %s\n", rd->majorSub);
-    printf("Minor Subjects :  %s\n", rd->minorSub);
+    printf("Name          : %s\n", r->name);
+    printf("Roll no.      : %d\n", r->rollno);
+    printf("Course Name   : %s\n", r->courseName);
+    printf("Major Subjects: %s\n", r->majorSub);
+    printf("Minor Subjects: %s\n", r->minorSub);
 }
